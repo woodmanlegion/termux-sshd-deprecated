@@ -1,0 +1,10 @@
+{
+  "name": "termux-sshd",
+  "version": "2026.08.30_01",
+  "description": "Start sshd automatically on Termux device boot via Termux:Boot hook. Listens on port 8022.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/woodmanlegion/termux-sshd"
+  }
+}

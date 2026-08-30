@@ -1,0 +1,15 @@
+#!/data/data/com.termux/files/usr/bin/bash
+# Termux boot hook — start sshd at device startup.
+# Place in ~/.termux/boot/ and make executable.
+# Requires: Termux:Boot app from F-Droid.
+#
+# Termux sshd listens on port 8022 by default (non-privileged).
+# On connecting hosts add to ~/.ssh/config:
+#   Host <device-name>
+#     HostName <ip-or-tailscale-name>
+#     Port 8022
+#     User <username>
+
+sleep 3   # allow network to initialise before accepting connections
+
+sshd
