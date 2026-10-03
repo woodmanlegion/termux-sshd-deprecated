@@ -1,4 +1,21 @@
-# termux-sshd
+# termux-sshd (deprecated — see woodmanlegion/edge-restore)
+
+**Deprecated 2026-10-03** (decided 2026-09-27, actually executed now). This
+repo's bare, unsupervised boot hook is the exact dangerous pattern
+[`woodmanlegion/edge-restore`](https://github.com/woodmanlegion/edge-restore)
+exists to prevent: a plain `~/.termux/boot/sshd` script with no process
+supervision at all conflicts with a properly `sv`/runit-supervised `sshd`
+over the same port — this is a documented real incident class in that repo
+(`AGENTS.md` rule #7 names this repo directly as a red flag). The actual,
+safe boot-reliability setup now lives in `edge-restore`'s
+`scripts/bootstrap.sh` + [`woodmanlegion/tclaw`](https://github.com/woodmanlegion/tclaw)
+(which writes the `sv`-managed `sshd` run script) + `sv status sshd`/
+[`woodmanlegion/svbase-health`](https://github.com/woodmanlegion/svbase-health)
+for health reporting (deliberately `manual` restart policy — this one
+service is never touched unattended). Archived; do not install this on a
+new device.
+
+---
 
 Start sshd automatically on Termux device boot. One boot hook, no configuration required.
 
